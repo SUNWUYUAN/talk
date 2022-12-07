@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 	<head>
 		<!-- GOOGLE_ANALYTICS_SCRIPT -->
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -30,7 +30,7 @@
 		<script defer src="vue.min.js"></script>
 		<script defer src="app.js"></script>
 		<script defer src="script.js"></script>
-		<title>在线会议-悟元会议</title>
+		<title>悟元会议</title>
 	</head>
 
 	<body>
@@ -38,26 +38,25 @@
 		<main id="app" v-bind:style="'display:block'">
 			<div id="intro" v-if="showIntro && !showChat && !showSettings">
 				<p>
-					<strong>会议</strong> is a free & open-source video conference app for the web. <br />Works in all major
-					browsers. No signups. No downloads. 100% peer-to-peer.
+					<strong>会议</strong>免费的P2P在线会议
 				</p>
 				<p>
 					<small>
-						<i>Share this link to start talking. </i><br />
+						<i>分享链接就可以开始会议了 </i><br />
 						<span class="roomLink">{{roomLink}}</span>
 						<a class="copyURL" href="javascript:void(0)" v-on:click="copyURL">{{copyText || "Copy"}}</a>
 					</small>
 				</p>
 				<div class="footer">
 					<iframe
-						src="https://ghbtns.com/github-btn.html?user=vasanthv&repo=talk&type=star&count=true"
+						src="https://ghbtns.com/github-btn.html?user=SUNWUYUAN&repo=talk&type=star&count=true&v=2"
 						frameborder="0"
 						scrolling="0"
 						width="150"
 						height="20"
 						title="GitHub"
 					></iframe>
-					<a href="/legal.html" class="terms light"><small>Terms</small></a>
+					<a href="/legal.html" class="terms light"><small>使用条款</small></a>
 				</div>
 			</div>
 
@@ -68,10 +67,10 @@
 						<span class="date light"> &middot; {{formatDate(chat.date)}}</span>
 						<div class="message" v-html="linkify(chat.message)"></div>
 					</div>
-					<div id="noChat" class="light" v-if="!chats.length"><small>No chat messages.</small></div>
+					<div id="noChat" class="light" v-if="!chats.length"><small>没有消息</small></div>
 				</div>
 				<div id="composeBox">
-					<div id="placeholder" v-if="typing.length <= 0">Type message...</div>
+					<div id="placeholder" v-if="typing.length <= 0">输入消息...</div>
 					<div
 						id="compose"
 						contenteditable="true"
@@ -80,17 +79,17 @@
 						v-on:paste="paste($event)"
 					></div>
 				</div>
-				<small class="light">Press enter to submit</small>
+				<small class="light">回车发送</small>
 			</div>
 
 			<div id="settings" v-if="showSettings">
 				<div id="name" class="label">
-					<span>Name:</span>
+					<span>姓名:</span>
 					<input type="text" placeholder="Enter your name" v-model="name" v-on:keyup="nameToLocalStorage" />
 				</div>
 				<hr class="separator" />
 
-				<div class="label">Camera 📹</div>
+				<div class="label">摄像头 📹</div>
 				<div v-for="(videoDevice, i) in videoDevices" v-bind:key="videoDevice.deviceId">
 					<div
 						v-bind:class="'link indent '+(selectedVideoDeviceId === videoDevice.deviceId ? 'active' : '')"
@@ -101,7 +100,7 @@
 				</div>
 				<hr class="separator" />
 
-				<div class="label">Microphone 🎙️</div>
+				<div class="label">麦克风 🎙️</div>
 				<div v-for="(audioDevice, i) in audioDevices" v-bind:key="audioDevice.deviceId">
 					<div
 						v-bind:class="'link indent '+(selectedAudioDeviceId === audioDevice.deviceId ? 'active' : '')"
